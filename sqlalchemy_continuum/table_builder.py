@@ -23,7 +23,7 @@ class ColumnReflector:
         column_copy = column._copy()
         column_copy.unique = False
         column_copy.onupdate = None
-        if column_copy.autoincrement:
+        if column_copy.autoincrement and column_copy.identity is None:
             column_copy.autoincrement = False
         if column_copy.name == self.option('transaction_column_name'):
             column_copy.nullable = False
